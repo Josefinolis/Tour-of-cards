@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     constructor(private cardService: CardService) { }
 
     getCards(): void {
-        this.cards = this.cardService.getCards();
+        this.cardService.getCards().then(cards => this.cards = cards);
     }
 
     ngOnInit():void {

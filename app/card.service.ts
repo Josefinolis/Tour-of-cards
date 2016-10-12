@@ -13,8 +13,8 @@ const CARDS: Card[] = [
 @Injectable()
 export class CardService {
 
-    getCards(): Card[] {
-        return CARDS;
+    getCards(): Promise<Card[]> {
+        return Promise.resolve(CARDS);
     }
 
 }
