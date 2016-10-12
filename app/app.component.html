@@ -7,11 +7,4 @@
         <span class="badge">{{card.cardId}}</span> {{card.name}}
     </li>
 </ul>
-<div *ngIf="selectedCard">
-    <h2>{{selectedCard.name}} details!</h2>
-    <div><label>id: </label>{{selectedCard.cardId}}</div>
-    <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedCard.name" placeholder="name"/>
-    </div>
-</div>
+<my-card-detail [card]="selectedCard"></my-card-detail>
