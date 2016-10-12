@@ -11,12 +11,16 @@ import {CardService} from "./card.service";
 })
 
 export class CardComponent implements OnInit {
+    errorMessage: string;
     cards: Card[];
     selectedCard: Card;
     constructor(private cardService: CardService) { }
 
     getCards(): void {
-        this.cardService.getCards().then(cards => this.cards = cards);
+        this.cardService.getCardsHttp().subscribe(
+            cards => this.cards = cards,
+            error => this.errorMessage = <any>error
+        );
     }
 
     ngOnInit():void {
