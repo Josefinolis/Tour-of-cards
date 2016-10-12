@@ -1,25 +1,27 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Card} from "./card";
-
-const CARDS: Card[] = [
-    { cardId: '11', name: 'Mr. Nice' },
-    { cardId: '12', name: 'Narco' },
-    { cardId: '13', name: 'Bombasto' },
-    { cardId: '14', name: 'Celeritas' },
-    { cardId: '15', name: 'Magneta' },
-    { cardId: '16', name: 'RubberMan' }
-];
+import {CardService} from "./card.service";
 
 @Component({
     selector: 'my-app',
     templateUrl: 'app/app.component.html',
-    styleUrls: ['app/app.component.css']
+    styleUrls: ['app/app.component.css'],
+    providers: [CardService]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'Tour of Cards';
-    cards = CARDS;
+    cards: Card[];
     selectedCard: Card;
+    constructor(private cardService: CardService) { }
+
+    getCards(): void {
+        this.cards = this.cardService.getCards();
+    }
+
+    ngOnInit():void {
+        this.getCards();
+    }
 
     onSelect(card: Card): void {
         this.selectedCard = card;
