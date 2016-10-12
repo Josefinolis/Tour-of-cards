@@ -1,29 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Card} from "./card";
-import {CardService} from "./card.service";
-
+import { Component } from '@angular/core';
 @Component({
     selector: 'my-app',
-    templateUrl: 'app/app.component.html',
-    styleUrls: ['app/app.component.css'],
-    providers: [CardService]
+    templateUrl: 'app/app.component.html'
 })
-
-export class AppComponent implements OnInit {
+export class AppComponent {
     title = 'Tour of Cards';
-    cards: Card[];
-    selectedCard: Card;
-    constructor(private cardService: CardService) { }
-
-    getCards(): void {
-        this.cardService.getCards().then(cards => this.cards = cards);
-    }
-
-    ngOnInit():void {
-        this.getCards();
-    }
-
-    onSelect(card: Card): void {
-        this.selectedCard = card;
-    }
 }

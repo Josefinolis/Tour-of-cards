@@ -1,10 +1,2 @@
 <h1>{{title}}</h1>
-<h2>My Cards</h2>
-<ul class="cards">
-    <li *ngFor="let card of cards"
-        [class.selected]="card === selectedCard"
-        (click)="onSelect(card)">
-        <span class="badge">{{card.cardId}}</span> {{card.name}}
-    </li>
-</ul>
-<my-card-detail [card]="selectedCard"></my-card-detail>
+<my-cards></my-cards>
