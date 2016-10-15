@@ -4,22 +4,6 @@
     <option *ngFor="let set of sets" [ngValue]="set">{{set}}</option>
 </select>
 
-<button (click)="getCards(selectedSet)">Buscar</button>
-
-<div class="card-list">
-    <ul class="itemHolder" style="list-style-type: none">
-        <template ngFor let-card [ngForOf]="cards">
-            <li *ngIf="card.img"
-                [class.selected]="card === selectedCard"
-                (click)="onSelect(card)"
-                style="float: left;"
-            >
-                <div style="width: 150px">
-                    <img src="{{card.img}}" alt="{{card.name}}" style="width: 100%"/>
-                </div>
-            </li>
-        </template>
-    </ul>
-</div>
+<my-card-list [set]="selectedSet"></my-card-list>
 
 <my-card-detail [card]="selectedCard"></my-card-detail>

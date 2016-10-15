@@ -6,6 +6,7 @@ import {CardDetailComponent} from "./card-detail.component";
 import {CardComponent} from "./card.component";
 import {CardService} from "./card.service";
 import {HttpModule, JsonpModule} from "@angular/http";
+import {CardListComponent} from "./card-list.component";
 
 @NgModule({
     imports: [
@@ -17,11 +18,13 @@ import {HttpModule, JsonpModule} from "@angular/http";
     declarations: [
         AppComponent,
         CardDetailComponent,
-        CardComponent
+        CardComponent,
+        CardListComponent,
     ],
     providers: [
         CardService
     ],
     bootstrap: [ AppComponent ]
 })
+
 export class AppModule { }

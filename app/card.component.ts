@@ -29,21 +29,10 @@ export class CardComponent implements OnInit {
         'The Grand Tournament'
         ];
     selectedSet: string;
-    errorMessage: string;
-    cards: Card[];
     selectedCard: Card;
 
-    constructor(private cardService: CardService) { }
-
-    getCards(set: string): void {
-        this.cardService.getCardsHttp(set).subscribe(
-            cards => this.cards = cards,
-            error => this.errorMessage = <any>error
-        );
-    }
-
     ngOnInit():void {
-        this.getCards('Basic');
+        this.selectedSet = 'Basic';
     }
 
     onSelect(card: Card): void {

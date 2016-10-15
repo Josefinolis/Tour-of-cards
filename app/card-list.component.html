@@ -1,0 +1,15 @@
+<div class="card-list">
+    <ul class="itemHolder" style="list-style-type: none">
+        <template ngFor let-card [ngForOf]="cards">
+            <li *ngIf="card.img"
+                [class.selected]="card === selectedCard"
+                (click)="onSelect(card)"
+                style="float: left;"
+            >
+                <div style="width: 150px">
+                    <img src="{{card.img}}" alt="{{card.name}}" style="width: 100%"/>
+                </div>
+            </li>
+        </template>
+    </ul>
+</div>
