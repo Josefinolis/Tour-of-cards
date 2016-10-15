@@ -11,9 +11,9 @@ export class CardService {
 
     constructor(private http: Http) { }
 
-    getCardsHttp(): Observable<Card[]> {
+    getCardsHttp(set: string): Observable<Card[]> {
         return this.http.get(
-            'https://omgvamp-hearthstone-v1.p.mashape.com/cards',
+            `https://omgvamp-hearthstone-v1.p.mashape.com/cards/sets/${set}`,
             {headers: new Headers({'X-Mashape-Key': 'XVqyMLCg4dmsh3BTZ6vQdeApQmhCp1MiHOjjsnu9XRNQiUycNZ'})}
         )
             .map(this.extractData)
@@ -22,7 +22,7 @@ export class CardService {
 
     private extractData(res: Response) {
         let body = res.json();
-        return body['Basic'] || { };
+        return body || { };
     }
 
     private handleError(error: any): Promise<any> {

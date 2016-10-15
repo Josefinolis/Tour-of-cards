@@ -1,6 +1,13 @@
 <h2>My Cards</h2>
-<div class="wrapper" style="width: 100%;">
-    <ul class="itemHolder" style="margin: 0; padding: 0; list-style-type: none">
+
+<select [(ngModel)]="selectedSet">
+    <option *ngFor="let set of sets" [ngValue]="set">{{set}}</option>
+</select>
+
+<button (click)="getCards(selectedSet)">Buscar</button>
+
+<div class="card-list">
+    <ul class="itemHolder" style="list-style-type: none">
         <template ngFor let-card [ngForOf]="cards">
             <li *ngIf="card.img"
                 [class.selected]="card === selectedCard"
@@ -12,7 +19,7 @@
                 </div>
             </li>
         </template>
-
     </ul>
 </div>
+
 <my-card-detail [card]="selectedCard"></my-card-detail>
