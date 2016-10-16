@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter} from '@angular/core';
 import {Card} from './card';
 import {CardService} from './card.service';
 
@@ -11,12 +11,11 @@ import {CardService} from './card.service';
 })
 
 export class CardListComponent implements OnInit, OnChanges {
-    errorMessage:string;
 
+    errorMessage:string;
     cards:Card[];
-    selectedCard:Card;
-    @Input()
-    set:string;
+    @Output() selectCardRequest = new EventEmitter<Card>();
+    @Input() set:string;
 
     constructor(private cardService:CardService) {}
 
@@ -27,15 +26,15 @@ export class CardListComponent implements OnInit, OnChanges {
     ngOnInit(): void {
         this.getCards(this.set);
     }
+    
+    selectCard(selectedCard: Card) {
+        this.selectCardRequest.emit(selectedCard)
+    }
 
     getCards(set:string):void {
         this.cardService.getCardsHttp(set).subscribe(
             cards => this.cards = cards,
             error => this.errorMessage = <any>error
         );
-    }
-
-    onSelect(card:Card):void {
-        this.selectedCard = card;
     }
 }

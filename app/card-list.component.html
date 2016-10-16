@@ -3,7 +3,7 @@
         <template ngFor let-card [ngForOf]="cards">
             <li *ngIf="card.img"
                 [class.selected]="card === selectedCard"
-                (click)="onSelect(card)"
+                (click)="selectCard(card)"
                 style="float: left;"
             >
                 <div style="width: 150px">

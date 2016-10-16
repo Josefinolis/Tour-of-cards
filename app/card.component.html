@@ -4,6 +4,6 @@
     <option *ngFor="let set of sets" [ngValue]="set">{{set}}</option>
 </select>
 
-<my-card-list [set]="selectedSet"></my-card-list>
+<my-card-list [set]="selectedSet" (selectCardRequest)="onSelect($event)"></my-card-list>
 
 <my-card-detail [card]="selectedCard"></my-card-detail>
